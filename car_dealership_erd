@@ -1,0 +1,86 @@
+SELECT*
+FROM customer
+
+INSERT INTO customer(first_name, last_name, address, phone_number)
+VALUES('Frodo', 'Baggins', '1 Loop, The Shire', '1-1-1')
+
+
+INSERT INTO customer(first_name, last_name, address, phone_number)
+VALUES('Pianki', 'Kush', '1600 Kanadake, Kerma', '1000-1-1600')
+
+INSERT INTO customer(first_name, last_name, address, phone_number)
+VALUES('Pico', 'Iyer', '2-22-2 Nishifushimi, Kyoto', '06-372-9918')
+
+SELECT *
+FROM sales_person
+
+INSERT INTO sales_person(first_name, last_name)
+VALUES('Carl', 'Weathers')
+
+INSERT INTO sales_person(first_name, last_name)
+VALUES('Brent', 'Adamson')
+
+UPDATE sales_person
+SET last_name = 'Dixon'
+WHERE employee_id = 1
+
+SELECT *
+FROM car_inventory
+
+UPDATE car_inventory 
+SET vin_number = 'Z98Y76X54'
+WHERE lot_id = 2
+
+INSERT INTO car_inventory(vin_number, make, model, year, car_price)
+VALUES('A12B34C56', 'Toyota', 'Camry', '2021', '26000.00')
+
+INSERT INTO car_inventory(vin_number, make, model, year, car_price)
+VALUES('A12B34C56', 'Toyota', 'Land Cruiser', '2021', '66000.00')
+
+
+SELECT *
+FROM customer
+JOIN invoice
+ON customer.customer_id = invoice.customer_id
+
+UPDATE customer
+SET last_name = 'Napata'
+WHERE customer_id = 2
+
+UPdate customer
+SET first_name = 'Piankhi'
+WHERE customer_id = 2
+
+
+SELECT *
+FROM customer
+
+SELECT *
+FROM invoice
+
+INSERT INTO invoice(customer_id, employee_id, lot_id)
+VALUES(1, 1, 1)
+ 
+INSERT INTO invoice(customer_id, employee_id, lot_id)
+VALUES(2, 2, 2)
+
+SELECT *
+FROM customer
+JOIN invoice ON customer.customer_id = invoice.customer_id
+JOIN sales_person ON sales_person.employee_id = invoice.employee_id
+JOIN car_inventory ON car_inventory.lot_id = invoice.lot_id
+
+SELECT customer.first_name, customer.last_name, vin_number, make, model, invoice.invoice_id, car_price
+FROM customer
+JOIN invoice ON customer.customer_id = invoice.customer_id
+JOIN sales_person ON sales_person.employee_id = invoice.employee_id
+JOIN car_inventory ON car_inventory.lot_id = invoice.lot_id
+
+
+
+
+
+
+
+
+
